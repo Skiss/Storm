@@ -1,0 +1,3 @@
+[submodule "Storm/externals/spdlog"]
+	path = Storm/externals/spdlog
+	url = https://github.com/gabime/spdlog
