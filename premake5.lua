@@ -14,7 +14,11 @@ project "Storm"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("build/" .. outputdir .. "/%{prj.name}")
 	files { "%{prj.name}/src/**.h", "%{prj.name}/src/**.cpp" }
-	includedirs { "%{prj.name}/externals/spdlog/include" }
+	includedirs
+	{
+		"%{prj.name}/src",
+		"%{prj.name}/externals/spdlog/include"
+	}
 
 	filter "system:windows"
 		staticruntime "On"
