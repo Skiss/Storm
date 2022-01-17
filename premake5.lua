@@ -19,6 +19,8 @@ project "Storm"
 		"%{prj.name}/src",
 		"%{prj.name}/externals/spdlog/include"
 	}
+	pchheader "Pch.h"
+	pchsource "Storm/src/Pch.cpp"
 
 	filter "system:windows"
 		staticruntime "On"
@@ -33,15 +35,19 @@ project "Storm"
 
 	filter "configurations:Debug"
 		defines "STORM_DEBUG"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "STORM_RELEASE"
+		runtime "Release"
+		symbols "On"
 		optimize "On"
 	
 	filter "configurations:Dist"
 		defines "STORM_DIST"
-		symbols "Full"
+		runtime "Release"
+		optimize "Full"
 
 project "Sandbox"
 	location "Sandbox"
@@ -63,12 +69,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "STORM_DEBUG"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "STORM_RELEASE"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "STORM_DIST"
+		runtime "Release"
 		symbols "Full"
