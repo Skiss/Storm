@@ -5,6 +5,8 @@ workspace "Storm"
 
 outputdir = "%{cfg.buildcfg}_%{cfg.system}_%{cfg.architecture}"
 
+include "Storm/externals/GLFW"
+
 project "Storm"
 	location "Storm"
 	kind "SharedLib"
@@ -13,12 +15,26 @@ project "Storm"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("build/" .. outputdir .. "/%{prj.name}")
-	files { "%{prj.name}/src/**.h", "%{prj.name}/src/**.cpp" }
+
+	files
+	{
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
+	}
+
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/externals/spdlog/include"
+		"%{prj.name}/externals/spdlog/include",
+		"%{prj.name}/externals/GLFW/include"
 	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
+	}
+
 	pchheader "Pch.h"
 	pchsource "Storm/src/Pch.cpp"
 
@@ -57,9 +73,23 @@ project "Sandbox"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("build/" .. outputdir .. "/%{prj.name}")
-	files { "%{prj.name}/src/**.h", "%{prj.name}/src/**.cpp" }
-	includedirs { "Storm/externals/spdlog/include", "Storm/src" }
-	links { "Storm" }
+
+	files
+	{
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
+	}
+
+	includedirs
+	{
+		"Storm/externals/spdlog/include",
+		"Storm/src"
+	}
+
+	links
+	{
+		"Storm"
+	}
 
 	filter "system:windows"
 		staticruntime "On"

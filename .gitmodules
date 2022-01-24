@@ -1,3 +1,6 @@
 [submodule "Storm/externals/spdlog"]
 	path = Storm/externals/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "Storm/externals/GLFW"]
+	path = Storm/externals/GLFW
+	url = https://github.com/Skiss/glfw
