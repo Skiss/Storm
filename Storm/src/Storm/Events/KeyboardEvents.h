@@ -19,7 +19,7 @@ public:
 	int keyCode;
 };
 
-class STORM_API KeyReleasedEvent : public Event
+class STORM_API KeyReleasedEvent : public KeyboardEvent
 {
 	EVENT_CLASS_TYPE(KeyReleased)
 
