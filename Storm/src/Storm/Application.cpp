@@ -17,6 +17,8 @@ Application::Application()
 
 void Application::run()
 {
+	ST_LOG_INFO("Main App running");
+	
 	while (m_isRunning)
 	{
 		m_window->update();

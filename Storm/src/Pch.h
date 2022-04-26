@@ -15,4 +15,5 @@
 	#include <Windows.h>
 #endif
 
+#include <Storm/Assert.h>
 #include <Storm/Log.h>

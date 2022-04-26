@@ -24,8 +24,9 @@ private:
 
 }
 
-#define STORM_TRACE(...) storm::Log::getLogger()->trace(__VA_ARGS__)
-#define STORM_INFO(...) storm::Log::getLogger()->info(__VA_ARGS__)
-#define STORM_WARNING(...) storm::Log::getLogger()->warning(__VA_ARGS__)
-#define STORM_ERROR(...) storm::Log::getLogger()->error(__VA_ARGS__)
-#define STORM_FATAL(...) storm::Log::getLogger()->fatal(__VA_ARGS__)
+#define ST_LOG_TRACE(...) storm::Log::getLogger()->trace(__VA_ARGS__)
+#define ST_LOG_DEBUG(...) storm::Log::getLogger()->debug(__VA_ARGS__)
+#define ST_LOG_INFO(...) storm::Log::getLogger()->info(__VA_ARGS__)
+#define ST_LOG_WARNING(...) storm::Log::getLogger()->warn(__VA_ARGS__)
+#define ST_LOG_ERROR(...) storm::Log::getLogger()->error(__VA_ARGS__)
+#define ST_LOG_CRITICAL(...) storm::Log::getLogger()->critical(__VA_ARGS__)

@@ -4,6 +4,7 @@ bin/
 build/
 
 # Files
+*.log
 *.user
 *.vcxproj
 *.vcxproj.filters

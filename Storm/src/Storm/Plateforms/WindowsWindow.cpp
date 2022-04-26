@@ -11,7 +11,7 @@ namespace storm
 
 static void glfwErrorCallback(int error, const char* description)
 {
-	STORM_ERROR("GLFW window error: {0}", description);
+	ST_LOG_ERROR("GLFW window error: {0}", description);
 	// ASSERT here
 }
 
@@ -36,6 +36,7 @@ void WindowsWindow::init(const WindowInfo& props)
 
 	if (!glfwInit())
 	{
+		ST_LOG_ERROR("Could not initialize GLFW");
 		// ASSERT
 		return;
 	}
@@ -45,6 +46,7 @@ void WindowsWindow::init(const WindowInfo& props)
 
 	if (!m_window)
 	{
+		ST_LOG_ERROR("Could create the GLFW window");
 		glfwTerminate();
 		// ASSERT
 		return;
@@ -56,7 +58,7 @@ void WindowsWindow::init(const WindowInfo& props)
 	glfwSetWindowCloseCallback(m_window, [](GLFWwindow* window)
 	{
 		WindowData* data = static_cast<WindowData*>(glfwGetWindowUserPointer(window));
-		// ASSERT
+
 		WindowClosedEvent e;
 		data->eventCallback(e);
 	});
@@ -64,7 +66,6 @@ void WindowsWindow::init(const WindowInfo& props)
 	glfwSetKeyCallback(m_window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 	{
 		WindowData* data = static_cast<WindowData*>(glfwGetWindowUserPointer(window));
-		// ASSERT
 
 		if (action == GLFW_RELEASE && key == GLFW_KEY_ESCAPE)
 		{
@@ -74,6 +75,8 @@ void WindowsWindow::init(const WindowInfo& props)
 	});
 
 	setVSync(props.vSync);
+
+	ST_LOG_INFO("Windows window initialized");
 }
 
 void WindowsWindow::update()
