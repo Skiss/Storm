@@ -12,6 +12,8 @@ namespace storm
 Application::Application()
 {
 	m_window = Window::createWindow(WindowInfo{"Application", 1080, 780, true});
+	ST_ASSERT(m_window);
+
 	m_window->setEventCallback(std::bind(&Application::onEvent, this, std::placeholders::_1));
 }
 

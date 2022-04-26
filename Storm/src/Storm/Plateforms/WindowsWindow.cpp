@@ -37,7 +37,6 @@ void WindowsWindow::init(const WindowInfo& props)
 	if (!glfwInit())
 	{
 		ST_LOG_ERROR("Could not initialize GLFW");
-		// ASSERT
 		return;
 	}
 
@@ -48,7 +47,7 @@ void WindowsWindow::init(const WindowInfo& props)
 	{
 		ST_LOG_ERROR("Could create the GLFW window");
 		glfwTerminate();
-		// ASSERT
+
 		return;
 	}
 
@@ -58,6 +57,7 @@ void WindowsWindow::init(const WindowInfo& props)
 	glfwSetWindowCloseCallback(m_window, [](GLFWwindow* window)
 	{
 		WindowData* data = static_cast<WindowData*>(glfwGetWindowUserPointer(window));
+		ST_ASSERT(data);
 
 		WindowClosedEvent e;
 		data->eventCallback(e);
@@ -66,6 +66,7 @@ void WindowsWindow::init(const WindowInfo& props)
 	glfwSetKeyCallback(m_window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 	{
 		WindowData* data = static_cast<WindowData*>(glfwGetWindowUserPointer(window));
+		ST_ASSERT(data);
 
 		if (action == GLFW_RELEASE && key == GLFW_KEY_ESCAPE)
 		{
