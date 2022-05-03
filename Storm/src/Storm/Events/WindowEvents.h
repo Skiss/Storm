@@ -40,8 +40,8 @@ class STORM_API WindowResizedEvent : public WindowEvent
 	EVENT_CLASS_TYPE(WindowResized)
 
 public:
-	unsigned newSizeX;
-	unsigned newSizeY;
+	unsigned newWidth;
+	unsigned newHeight;
 };
 
 }
