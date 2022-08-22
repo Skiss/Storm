@@ -77,7 +77,7 @@ void WindowsWindow::init(const WindowInfo& props)
 		}
 		else if (action == GLFW_REPEAT)
 		{
-			// #TODO handle the repeat stuff. Putting jsut 1 in the meantime.
+			// #TODO handle the repeat stuff. Putting just 1 in the meantime.
 			KeyPressedEvent e(key, 1);
 			data->eventCallback(e);
 		}

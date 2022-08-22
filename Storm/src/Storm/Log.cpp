@@ -15,7 +15,7 @@ std::shared_ptr<spdlog::logger> Log::s_logger;
 void Log::init()
 {
 	auto consoleSink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
-	consoleSink->set_level(spdlog::level::debug);
+	consoleSink->set_level(spdlog::level::trace);
 	consoleSink->set_pattern("%^[%T] %n - %-8l : %v%$");
 
 	auto fileSink = std::make_shared<spdlog::sinks::basic_file_sink_mt>("Storm.log", true);
