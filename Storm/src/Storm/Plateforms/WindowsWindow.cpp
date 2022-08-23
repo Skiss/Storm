@@ -2,6 +2,9 @@
 
 #include "WindowsWindow.h"
 
+#include "glad/glad.h"
+#include <GLFW/glfw3.h>
+
 #include "Storm/Events/KeyboardEvents.h"
 #include "Storm/Events/MouseEvents.h"
 #include "Storm/Events/WindowEvents.h"
@@ -52,6 +55,10 @@ void WindowsWindow::init(const WindowInfo& props)
 	}
 
 	glfwMakeContextCurrent(m_window);
+
+	int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+	ST_ASSERT_MSG(status, "Failed to initialize Glad");
+
 	glfwSetWindowUserPointer(m_window, &m_data);
 
 	// Setting events callbacks

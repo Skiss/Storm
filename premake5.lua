@@ -6,6 +6,7 @@ workspace "Storm"
 outputdir = "%{cfg.buildcfg}_%{cfg.system}_%{cfg.architecture}"
 
 include "Storm/externals/GLFW"
+include "Storm/externals/glad"
 
 project "Storm"
 	location "Storm"
@@ -26,14 +27,18 @@ project "Storm"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/externals/spdlog/include",
-		"%{prj.name}/externals/GLFW/include"
+		"%{prj.name}/externals/GLFW/include",
+		"%{prj.name}/externals/glad/include"
 	}
 
 	links
 	{
 		"GLFW",
-		"opengl32.lib"
+		"opengl32.lib",
+		"glad"
 	}
+	
+	defines { "GLFW_INCLUDE_NONE" }
 
 	pchheader "Pch.h"
 	pchsource "Storm/src/Pch.cpp"
